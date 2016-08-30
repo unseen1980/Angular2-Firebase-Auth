@@ -1,3 +1,11 @@
-<h1>
-  {{title}}
-</h1>
+
+<button (click)="login()">
+ Use My Google Account
+</button>
+<button (click)="logout()">
+  Logout
+</button>
+
+<h4>{{user.displayName}}</h4>
+<h5>{{user.email}}</h5>
+<img src="{{user.photoURL}}" alt="">
