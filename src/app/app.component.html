@@ -1,11 +1,53 @@
+<nav>
+  <div class="nav-wrapper blue darken-3">
+    <a href="#!" class="brand-logo">Firebase Authentication in Angular2</a>
+    <ul class="right hide-on-med-and-down">
+      <li [hidden]="isUserLoggedIn()">
+        <div class="row">
+          <div class="col s3">
+            <img src="{{user.photoURL}}" alt="" class="circle responsive-img" style="margin-top:20%;">
+          </div>
+          <div class="col s9">
+            <span>
+                 {{user.displayName}}
+              </span>
+          </div>
+        </div>
+      </li>
+      <li [hidden]="isUserLoggedIn()">
+        <a class="waves-effect waves-light btn blue" (click)="logout()">
+            Logout
+          </a>
+      </li>
+    </ul>
+  </div>
+</nav>
 
-<button (click)="login()">
- Use My Google Account
-</button>
-<button (click)="logout()">
-  Logout
-</button>
+<div class="section no-pad-bot">
+  <div class="container">
+    <br><br>
+    <h1 class="header center blue-text text-darken-3">Latest Angular2 articles!</h1>
+    <div class="row center" [hidden]="!isUserLoggedIn()">
+      <h5 class="header col s12 light">Login with your Google account to see the list</h5>
+    </div>
+    <div class="row center" [hidden]="!isUserLoggedIn()">
+      <a class="waves-effect waves-light btn blue" (click)="login()">Login</a>
+    </div>
+    <br><br>
+  </div>
+</div>
 
-<h4>{{user.displayName}}</h4>
-<h5>{{user.email}}</h5>
-<img src="{{user.photoURL}}" alt="">
+<div class="section no-pad-bot blue-text text-darken-3" [hidden]="isUserLoggedIn()">
+  <div class="container">
+    <ul class="collection with-header">
+      <li class="collection-item" *ngFor="let item of items | async">
+        <div>
+          {{ item.$key }}
+          <a href="{{ item.$value }}" class="secondary-content">
+            <i class="material-icons blue-text text-darken-3">send</i>
+          </a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
