@@ -15,8 +15,7 @@
       "prefix": "app",
       "mobile": false,
       "styles": [
-        "styles.css",
-        "materialize.css"
+        "styles.css"
       ],
       "scripts": [],
       "environments": {
